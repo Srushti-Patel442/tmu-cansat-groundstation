@@ -1,4 +1,4 @@
-# 🚀 TMU CanSat Ground Station
+# TMU CanSat Ground Station
 
 ## Overview
 
