@@ -1,0 +1,62 @@
+#accelChart,
+#gyroChart,
+#pressureChart,
+#altitudeChart {
+    height: 500px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f172a;
+    color: white;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #94a3b8;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+}
+
+.chart-container {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.card span {
+    font-weight: bold;
+}
+
+.js-plotly-plot {
+    width: 100% !important;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TMU CanSat Telemetry Viewer</title>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <h1> TMU CanSat Telemetry Viewer</h1>
+
+    <div class="stats">
+
+        <div class="card">
+            <h3>Max Acceleration</h3>
+            <p id="maxAccel">--</p>
+        </div>
+
+        <div class="card">
+            <h3>Max Pressure</h3>
+            <p id="maxPressure">--</p>
+        </div>
+
+        <div class="card">
+            <h3>GPS Satellites</h3>
+            <p id="gpsSats">--</p>
+        </div>
+
+        <div class="card">
+            <h3>Current Altitude</h3>
+            <p id="currentAltitude">--</p>
+        </div>
+
+        <div class="card">
+            <h3>Samples</h3>
+            <p id="sampleCount">--</p>
+        </div>
+
+        <div class="card">
+            <h3>Flight Duration</h3>
+            <p id="flightTime">--</p>
+        </div>
+
+    </div>
+
+    <div class="chart-container">
+        <div id="accelChart"></div>
+    </div>
+
+    <div class="chart-container">
+        <div id="gyroChart"></div>
+    </div>
+
+    <div class="chart-container">
+        <div id="pressureChart"></div>
+    </div>
+
+    <div class="chart-container">
+        <div id="altitudeChart"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
