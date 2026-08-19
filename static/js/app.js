@@ -1,10 +1,16 @@
 async function loadTelemetry() {
 
+    // Fetch telemetry data from Flask API
     const response = await fetch("/api/telemetry");
     const data = await response.json();
+
+    // Extract timestamps for chart x-axis
     const time = data.map(d => d.timestamp);
 
-    // Telemetry Cards
+    // -----------------------------
+    // Dashboard Statistics Cards
+    // -----------------------------
+
     document.getElementById("maxAccel").innerText =
         Math.max(...data.map(d => d.accel_mag)).toFixed(2);
 
@@ -13,16 +19,17 @@ async function loadTelemetry() {
 
     document.getElementById("gpsSats").innerText =
         Math.max(...data.map(d => d.gps_sats));
-    
+
     document.getElementById("sampleCount").innerText =
         data.length;
 
     document.getElementById("flightTime").innerText =
-        time[time.length - 1].toFixed(2) + " s";
+        Math.round(time[time.length - 1]) + " s";
 
     document.getElementById("currentAltitude").innerText =
         data[data.length - 1].altitude.toFixed(2) + " m";
 
+    // Shared dark theme used by all charts
     const layoutTemplate = {
         paper_bgcolor: "#1e293b",
         plot_bgcolor: "#1e293b",
@@ -31,7 +38,9 @@ async function loadTelemetry() {
         }
     };
 
+    // -----------------------------
     // Accelerometer Plot
+    // -----------------------------
     Plotly.newPlot("accelChart", [
         {
             x: time,
@@ -60,15 +69,13 @@ async function loadTelemetry() {
     ], {
         ...layoutTemplate,
         title: "Accelerometer Data",
-        xaxis: {
-            title: "Timestamp"
-        },
-        yaxis: {
-            title: "Acceleration"
-        }
+        xaxis: { title: "Timestamp" },
+        yaxis: { title: "Acceleration" }
     });
 
+    // -----------------------------
     // Gyroscope Plot
+    // -----------------------------
     Plotly.newPlot("gyroChart", [
         {
             x: time,
@@ -91,15 +98,13 @@ async function loadTelemetry() {
     ], {
         ...layoutTemplate,
         title: "Gyroscope Data",
-        xaxis: {
-            title: "Timestamp"
-        },
-        yaxis: {
-            title: "Angular Velocity"
-        }
+        xaxis: { title: "Timestamp" },
+        yaxis: { title: "Angular Velocity" }
     });
 
+    // -----------------------------
     // Pressure Plot
+    // -----------------------------
     Plotly.newPlot("pressureChart", [
         {
             x: time,
@@ -110,15 +115,13 @@ async function loadTelemetry() {
     ], {
         ...layoutTemplate,
         title: "Barometric Pressure",
-        xaxis: {
-            title: "Timestamp"
-        },
-        yaxis: {
-            title: "Pressure (Pa)"
-        }
+        xaxis: { title: "Timestamp" },
+        yaxis: { title: "Pressure (Pa)" }
     });
 
+    // -----------------------------
     // Altitude Plot
+    // -----------------------------
     Plotly.newPlot("altitudeChart", [
         {
             x: time,
@@ -129,18 +132,10 @@ async function loadTelemetry() {
     ], {
         ...layoutTemplate,
         title: "Estimated Altitude",
-        xaxis: {
-            title: "Timestamp"
-        },
-        yaxis: {
-            title: "Altitude (m)"
-        }
+        xaxis: { title: "Timestamp" },
+        yaxis: { title: "Altitude (m)" }
     });
-    document.getElementById("sampleCount").innerText =
-        data.length;
-
-    document.getElementById("flightTime").innerText =
-        time[time.length - 1].toFixed(2) + " s";
 }
 
+// Load dashboard when page opens
 loadTelemetry();

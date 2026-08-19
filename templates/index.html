@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>TMU CanSat Telemetry Viewer</title>
 
+    <!-- Plotly Chart Library -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
+    <!-- Custom Dashboard Styling -->
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
 
-    <h1> TMU CanSat Telemetry Viewer</h1>
+    <!-- Dashboard Header -->
+    <h1>🚀 TMU CanSat Ground Station</h1>
 
+    <!-- Mission Statistics Cards -->
     <div class="stats">
 
         <div class="card">
@@ -47,23 +52,29 @@
 
     </div>
 
+    <!-- Accelerometer Visualization -->
     <div class="chart-container">
         <div id="accelChart"></div>
     </div>
 
+    <!-- Gyroscope Visualization -->
     <div class="chart-container">
         <div id="gyroChart"></div>
     </div>
 
+    <!-- Pressure Visualization -->
     <div class="chart-container">
         <div id="pressureChart"></div>
     </div>
 
+    <!-- Altitude Visualization -->
     <div class="chart-container">
         <div id="altitudeChart"></div>
     </div>
 
+    <!-- Dashboard Logic -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
+
 </html>

@@ -1,9 +1,13 @@
+/* ---------- Chart Sizing ---------- */
+
 #accelChart,
 #gyroChart,
 #pressureChart,
 #altitudeChart {
     height: 500px;
 }
+
+/* ---------- Page Layout ---------- */
 
 body {
     font-family: Arial, sans-serif;
@@ -12,17 +16,14 @@ body {
     margin: 20px;
 }
 
+/* ---------- Header ---------- */
+
 h1 {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.subtitle {
-    text-align: center;
-    color: #94a3b8;
-    margin-top: -15px;
-    margin-bottom: 30px;
-}
+/* ---------- Statistics Grid ---------- */
 
 .stats {
     display: grid;
@@ -31,8 +32,9 @@ h1 {
     margin-bottom: 30px;
 }
 
+/* ---------- Statistics Cards ---------- */
+
 .card {
-    flex: 1;
     background: #1e293b;
     border-radius: 12px;
     padding: 20px;
@@ -45,6 +47,12 @@ h1 {
     margin: 10px 0 0 0;
 }
 
+.card span {
+    font-weight: bold;
+}
+
+/* ---------- Chart Containers ---------- */
+
 .chart-container {
     background: #1e293b;
     padding: 15px;
@@ -53,9 +61,7 @@ h1 {
     width: 100%;
 }
 
-.card span {
-    font-weight: bold;
-}
+/* ---------- Plotly Chart Sizing ---------- */
 
 .js-plotly-plot {
     width: 100% !important;
